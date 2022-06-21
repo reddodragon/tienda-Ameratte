@@ -7,8 +7,7 @@ function App() {
 
     <div className="App">
       <ResponsiveAppBar></ResponsiveAppBar>
-      
-      <ItemListContainer></ItemListContainer>
+      <ItemListContainer greeding={"Hola como estas componente"}></ItemListContainer>
     </div>
   );
 }

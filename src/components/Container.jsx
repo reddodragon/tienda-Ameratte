@@ -1,12 +1,13 @@
-import * as React from 'react';
+import ItemCount from "./ItemCount"
+
+
 
 function ItemListContainer() {
-    return(
-        <>
-            <p style={{color:'black'}}>Acá van los items</p>
-        </>
-    );
-        
+  return (
+    <div className="item-container">
+    
+        <ItemCount stock={50} initial={20}></ItemCount>
+    </div>
+  )
 }
-
-export default ItemListContainer;
+export default ItemListContainer
