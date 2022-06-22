@@ -1,12 +1,20 @@
-import * as React from 'react';
+import ItemCount from "./ItemCount"
+
+
 
 function ItemListContainer() {
-    return(
-        <>
-            <p style={{color:'black'}}>Acá van los items</p>
-        </>
-    );
-        
+  const onAdd = (btnClick) => {
+    if(btnClick === 0){
+        return
+    }else{
+        alert("Se agrego al carrito correctamente")
+    }        
 }
-
-export default ItemListContainer;
+  return (
+    <div className="item-container">
+    
+        <ItemCount onAdd={onAdd} stock={50} initial={0}></ItemCount>
+    </div>
+  )
+}
+export default ItemListContainer

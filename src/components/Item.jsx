@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Item(productos) {
+export default function Item({productos}) {
   return (
     <div key={productos.id}>
     <h1> {productos.name}</h1>

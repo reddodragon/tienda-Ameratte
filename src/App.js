@@ -2,6 +2,7 @@ import './App.css';
 import ResponsiveAppBar from './components/NavBar'
 import ItemListContainer from './components/Container'
 import MyPromise from './components/Promise'
+import CatsContainer from './components/CatsContainer'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       
       <ItemListContainer></ItemListContainer>
       <MyPromise></MyPromise>
+      <CatsContainer></CatsContainer>
     </div>
   );
 }
