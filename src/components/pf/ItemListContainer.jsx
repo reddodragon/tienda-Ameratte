@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import ItemsLayout from './ItemContainer'
+import ItemsLayout from './ItemList'
 
-export default function MyPromise() { 
+export default function ItemListContainer() { 
 
   const [productos, setProductos] = useState([])
    useEffect(() => {
@@ -9,14 +9,18 @@ export default function MyPromise() {
 
       setTimeout(() => {
         resolve([
-          {id:1, name:'zapatillas', value:399}, 
+          {id:1, name:'zapatillas', value:399, category:"nike"}, 
           {id:2, name:'remeras', value:400}, 
+          {id:3, name:'Pantalones', value:40}, 
           
         ], 2000);
       });
       });
+
+      
       productos.then((resolve) =>{
           setProductos(resolve);
+          
       }).catch((reject) =>{
         setProductos(reject);
       })
@@ -29,3 +33,5 @@ export default function MyPromise() {
   )
 }
 
+// let arrayFiltrado = productos.filter((item) => item.category === "nike")
+//           setProductos(arrayFiltrado);

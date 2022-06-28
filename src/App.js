@@ -1,18 +1,31 @@
 import './App.css';
 import ResponsiveAppBar from './components/NavBar'
-import ItemListContainer from './components/Container'
-import MyPromise from './components/Promise'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import ItemListContainer from './components/pf/ItemListContainer'
 import CatsContainer from './components/CatsContainer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
+  //itemListContainer
+  //category
+  //itemDetailContainer
   return (
 
     <div className="App">
-      <ResponsiveAppBar></ResponsiveAppBar>
+
+      <BrowserRouter>
+        <ResponsiveAppBar></ResponsiveAppBar>
+        <Routes>
+          <Route path="/" element={<ItemListContainer/>}/>
+          <Route path="/category/:id" element={<ItemListContainer/>}/>
+          <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+        </Routes>
+
+        <div>Footer</div>
+      </BrowserRouter>
       
-      <ItemListContainer></ItemListContainer>
-      <MyPromise></MyPromise>
-      <CatsContainer></CatsContainer>
+      
+
     </div>
   );
 }
