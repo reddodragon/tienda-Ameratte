@@ -2,7 +2,6 @@ import './App.css';
 import ResponsiveAppBar from './components/NavBar'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import ItemListContainer from './components/pf/ItemListContainer'
-import CatsContainer from './components/CatsContainer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
