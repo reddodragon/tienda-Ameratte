@@ -1,14 +1,14 @@
 
 import React, {useEffect, useState} from "react"
 import { useParams } from 'react-router-dom';
-import ItemDetail from "./ItemDetail"
+import {ItemDetail} from "./ItemDetail";
 
 
 function ItemDetailContainer() {
 
 const [item, setItem] = useState({})
 const [loading, setLoading] = useState (true)
-const { itemId } = useParams ()
+const { id } = useParams()
 
 useEffect(() => {
   const mock = [
@@ -23,20 +23,19 @@ useEffect(() => {
         resolve(mock)
     }, 2000)
 }).then(res => {
-    const item = res.find((item) => item.id ===  Number(itemId))
+    const item = res.find((item) => item.id ===  Number(id))
     setItem(item)
     setLoading(false)
 })
 
   
-}, [itemId])
+}, [id])
 
 
   return (
     <div className="item-container">
-        {loading && <h1>loading...</h1>}
-        <ItemDetail {...item} />
-        
+        {loading ? <h1>loading...</h1> : <ItemDetail {...item} />}
+
     </div>
   )
 }
