@@ -17,7 +17,7 @@ export default function ItemListContainer() {
         ]
 
       
-      let categotyFilter = productos.filter((item) => item.cat === Number(idCategory))
+      let categotyFilter = productos.filter((item) => item.cat === idCategory)
 
 		new Promise((resolve, reject) => {
 			setTimeout(() => {
