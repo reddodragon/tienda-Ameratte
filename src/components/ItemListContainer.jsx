@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from "react-router-dom";
 import ItemsLayout from './ItemList'
-import Grid from '@mui/material/Grid';
 
 export default function ItemListContainer() { 
 
@@ -26,18 +25,14 @@ export default function ItemListContainer() {
 				} else {
 					resolve(categotyFilter);
 				}
-			}, 2000);
+			}, 500);
 		}).then((res) => {
 			setProductos(res);
 			setLoading(false);
 		});
 	}, [idCategory]);
   return (
-      <Grid container  spacing={3}>
-        <Grid item xs={3}>
-          {loading ? <h1>loading...</h1> : productos && <ItemsLayout productos={productos}/>}
-        </Grid>
-      </Grid>
+      loading ? <h1>loading...</h1> : productos && <ItemsLayout productos={productos}/>
   )
 }
 

@@ -8,7 +8,7 @@ function Api() {
     .then((data) => console.log(data))
     }, [])
   return (
-    <div>Api</div>
+    <>Api</>
   )
 }
 

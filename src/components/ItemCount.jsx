@@ -12,22 +12,19 @@ import { Link } from 'react-router-dom';
 
 const ItemCount = ({ stock, initial, onAdd, title, precio, img}) => {
 
-    const [btnClick, setBtnClick] = useState(initial)
+    const [itemCount, setItemCount] = useState(initial)
 
-    const clickSum = () => {
-        if(btnClick >= stock){
-            return
-        }
-        setBtnClick(btnClick + 1)
+  const addItem = () => {
+    if (itemCount < stock) {
+      setItemCount(  Number(itemCount) + 1 );
     }
+  }
 
-    const clickRes = () => {
-        if(btnClick === 0){
-            return
-        }
-        setBtnClick(btnClick - 1)
+  const removeItem = () => {
+    if (itemCount > 0) {
+      setItemCount( Number(itemCount) > 0 && Number(itemCount) - 1 );
     }
-
+  }
   return (
     
     <div className="container-button">
@@ -57,11 +54,11 @@ const ItemCount = ({ stock, initial, onAdd, title, precio, img}) => {
                     alignItems:'center',                                      
                 }}>
                     <ButtonGroup color="primary" aria-label="outlined primary button group">
-                        <Button variant='contained' size="small" color="secondary" onClick={clickRes}>-</Button>               
-                        <Container>{btnClick}</Container>
-                        <Button variant='contained' size="small" color="secondary"  onClick={clickSum} >+</Button> 
+                        <Button variant='contained' size="small" color="secondary" onClick={removeItem}>-</Button>               
+                        <Container>{itemCount}</Container>
+                        <Button variant='contained' size="small" color="secondary"  onClick={addItem} >+</Button> 
                     </ButtonGroup>
-                <Button  onClick={() => onAdd(btnClick)} sx={{mt:3}} variant='outlined'>add to cart</Button>
+                <Button  onClick={ ()=> {onAdd(itemCount)}} sx={{mt:3}} variant='outlined'>add to cart</Button>
                 <br></br>
                 <Button component={Link} to="/Cart" variant="contained" color="primary">Finalizar compra</Button>
             </CardActions>
