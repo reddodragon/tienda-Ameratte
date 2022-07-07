@@ -6,7 +6,7 @@ import { CartContext } from "../context/CartContext"
 
 export const ItemDetail = (item) => {
     
-    const { addItem, quantityInCart } = useContext(CartContext);
+    const { addItem, cantidadCart } = useContext(CartContext);
 
     const [addedToCart, setAddedToCart] = useState(false);
   
@@ -24,8 +24,8 @@ export const ItemDetail = (item) => {
     <>
 
             <ItemCount
-              stock={ quantityInCart(item.id) ? item.stock - quantityInCart(item.id) : item.stock }
-              initial={ quantityInCart(item.id) === item.stock ? 0 : 1 }
+              stock={ cantidadCart(item.id) ? item.stock - cantidadCart(item.id) : item.stock }
+              initial={ cantidadCart(item.id) === item.stock ? 0 : 1 }
               onAdd={onAdd}
               title={item.title} 
               precio={item.precio} 
