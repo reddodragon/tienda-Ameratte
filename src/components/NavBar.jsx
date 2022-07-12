@@ -10,8 +10,10 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import ShoppingCart from '@mui/icons-material/ShoppingCart';
-
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
+import { Link } from 'react-router-dom';
+import CartWidget from '../components/CartWidget';
 
 
 const pages = ['Products', 'Pricing', 'Tienda'];
@@ -29,6 +31,7 @@ const ResponsiveAppBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const { totalInCart } = useContext(CartContext)
 
 
 
@@ -121,7 +124,11 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
-          <ShoppingCart fontSize="large" sx={{ display: { xs: 'flex' }, mr: 3, }}></ShoppingCart>
+          <Box sx={{ justifyContent: 'flex-end', alignContent: 'center', gap: 4, display: 'flex' }}>
+              <Link to='/cart' style={{ color: 'white', display: 'flex' }}>
+                <CartWidget cartCount={ totalInCart() } />
+              </Link>
+            </Box>
         </Toolbar>
       </Container>
     </AppBar>
