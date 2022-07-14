@@ -21,7 +21,7 @@ function App() {
         <ResponsiveAppBar></ResponsiveAppBar>
         <Routes>
           <Route path="/" element={<ItemListContainer/>}/>
-          <Route path="/category/:idCategory" element={<ItemListContainer/>}/>
+          <Route path="/categoria/:idCat" element={<ItemListContainer/>}/>
           <Route path="/item/:id" element={<ItemDetailContainer/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/testconsulta" element={<TestConsulta/>}/>

@@ -29,7 +29,7 @@ export const ItemDetail = (item) => {
               onAdd={onAdd}
               title={item.title} 
               precio={item.precio} 
-              img={item.pictureURL}
+              img={item.img}
             />
 
     </> 

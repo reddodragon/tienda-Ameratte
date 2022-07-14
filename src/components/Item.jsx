@@ -16,7 +16,7 @@ export default function Item({productos}) {
             <CardMedia
                 component="img"
                 height="194"
-                image={productos.pictureURL}
+                image={productos.img}
                 alt={productos.title}
             />
             <Typography variant="h3" component="div">
