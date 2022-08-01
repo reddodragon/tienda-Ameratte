@@ -1,0 +1,18 @@
+.divCheckout{
+    width:50vw;
+    border-radius: 10px;
+    background-color: #0d1117e8;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin:50px auto;
+    color: #fff;
+}
+
+
+
+@media (max-width: 700px) {
+    .divCheckout{
+        width:100vw;
+    }
+}

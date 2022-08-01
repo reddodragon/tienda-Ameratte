@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 
 export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
+
+  useEffect(() => {
+    getCartFromLocalStorage(); 
+  }, []);  
   const [cart, setCart] = useState([]);
 
   const addItem = (itm) => {
@@ -24,15 +29,18 @@ export const CartProvider = ({ children }) => {
     }
 
     setCart(newCart);
+    setCartInLocalStorage(newCart);
   };
 
   const removeItem = (id) => {
     const newCart = cart.filter((item) => item.id !== id);
     setCart(newCart);
+    setCartInLocalStorage(newCart);
   };
 
   const cartClear = () => {
     setCart([]);
+    setCartInLocalStorage([]);
   };
 
   const isInCart = (id) => {
@@ -58,6 +66,19 @@ export const CartProvider = ({ children }) => {
       return acc + item.quantity * item.precio;
     }, 0);
   };
+
+
+  const getCartFromLocalStorage = () => {
+    if (localStorage.getItem('cart')) {
+      setCart(JSON.parse(localStorage.getItem('cart')));
+    }
+  }
+
+  const setCartInLocalStorage = ( cart ) => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  
 
   return (
     <CartContext.Provider

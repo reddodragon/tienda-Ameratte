@@ -1,5 +1,6 @@
 import React from "react";
 import ItemCount from "./ItemCount"
+import { Box } from '@mui/material'
 import { useContext, useState } from 'react';
 import { CartContext } from "../context/CartContext"
 
@@ -21,7 +22,7 @@ export const ItemDetail = (item) => {
 
   
     return (
-    <>
+    <Box container sx={{ display: 'flex', justifyContent: 'center', gap: 5, flexWrap: 'wrap', marginTop: 10 }}>
 
             <ItemCount
               stock={ cantidadCart(item.id) ? item.stock - cantidadCart(item.id) : item.stock }
@@ -32,7 +33,7 @@ export const ItemDetail = (item) => {
               img={item.img}
             />
 
-    </> 
+    </Box> 
     )
 }
 

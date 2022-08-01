@@ -4,51 +4,41 @@ import ItemsLayout from "./ItemList";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 export default function ItemListContainer() {
-  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [catalog, setCatalog] = useState([]);
 
   let { idCat } = useParams();
 
   useEffect(() => {
-    async function getItems() {
-      let auxArray = [];
-      let aux;
-      const db = getFirestore();
-      const prod = collection(db, "Productos");
-      let promise = getDocs(prod).then((res) => {
-        res.docs.map((item) => {
-          aux = { ...item.data(), id: item.id };
-          auxArray = auxArray.concat(aux);
-          return auxArray;
-        });
-        setCatalog(auxArray);
+    const db = getFirestore();
+    const prod = collection(db, "Productos");
+
+    if (idCat) {
+      getDocs(prod).then((e) => {
+        const auxCatalog = e.docs.map((item) => ({
+          ...item.data(),
+          id: item.id,
+        }));
+        const auxCat = auxCatalog.filter(product => product.cat === idCat);
+        setCatalog(auxCat);
+        setLoading(false);
       });
-
-      await promise;
-    }
-
-    getItems();
-
-    let categotyFilter = catalog.filter((item) => item.cat === idCat);
-
-    if (idCat === undefined) {
-      setProductos(catalog);
-      console.log(catalog);
-      setLoading(false);
     } else {
-      setProductos(categotyFilter);
-      setLoading(true);
+      getDocs(prod).then((e) => {
+        const auxCatalog = e.docs.map((item) => ({
+          ...item.data(),
+          id: item.id,
+        }));
+        setCatalog(auxCatalog);
+        setLoading(false);
+      });
     }
-
-    
-  }, [idCat, catalog]);
-
+  }, [idCat]);
 
   return loading ? (
     <h1>loading...</h1>
   ) : (
-    productos && <ItemsLayout productos={productos} />
+    catalog && <ItemsLayout productos={catalog} />
   );
 }
 

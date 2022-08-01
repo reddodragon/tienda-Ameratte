@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import CartWidget from '../components/CartWidget';
 
 
-const pages = ['Products', 'Pricing', 'Tienda'];
+const pages = ['Accion', 'Carreras', 'Aventura'];
 
 
 const ResponsiveAppBar = () => {
@@ -54,7 +54,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            Fede
+            TodoJuegos
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -88,7 +88,9 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    <Link style={{ color: 'white', textDecoration: 'none' }} to={`/categoria/${page}`}>{page}</Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -119,7 +121,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link style={{ color: 'white', textDecoration: 'none' }} to={`/categoria/${page}`}>{page}</Link>
               </Button>
             ))}
           </Box>
